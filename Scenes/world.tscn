@@ -1,14 +1,166 @@
-[gd_scene load_steps=2 format=3 uid="uid://cabwhi6t8o103"]
+[gd_scene load_steps=12 format=3 uid="uid://cabwhi6t8o103"]
+
+[ext_resource type="Texture2D" uid="uid://d26reug3htjan" path="res://Meshes/Textures/Plate_AlbedoTransparency.png" id="1_0ce1q"]
+[ext_resource type="PackedScene" uid="uid://dq5p37ru51n44" path="res://Scenes/container_full.tscn" id="2_okd2l"]
+[ext_resource type="PackedScene" uid="uid://rd76ldbvs03m" path="res://Scenes/player.tscn" id="3_exxss"]
+[ext_resource type="PackedScene" uid="uid://b74iymygffbi1" path="res://Scenes/container_storage.tscn" id="4_uy73u"]
+[ext_resource type="PackedScene" uid="uid://btdtuy3112v8m" path="res://Scenes/stove.tscn" id="5_fp4x8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tph7w"]
+albedo_texture = ExtResource("1_0ce1q")
 
 [sub_resource type="BoxMesh" id="BoxMesh_3xrmv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ocv4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u7dhb"]
+sky_top_color = Color(1, 1, 1, 1)
+sky_horizon_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Sky" id="Sky_ilao1"]
+sky_material = SubResource("ProceduralSkyMaterial_u7dhb")
+
+[sub_resource type="Environment" id="Environment_dq1ns"]
+background_mode = 2
+sky = SubResource("Sky_ilao1")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
 
 [node name="World" type="Node3D"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-transform = Transform3D(237.925, 0, 0, 0, 8.46607, 0, 0, 0, 332.336, 0, -4.20553, 102)
+transform = Transform3D(10.3246, 0, 0, 0, 0.595926, 0, 0, 0, 6.69508, 0, -0.35455, 1.04138)
+material_override = SubResource("StandardMaterial3D_tph7w")
 mesh = SubResource("BoxMesh_3xrmv")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(10.3246, 0, 0, 0, 0.595926, 0, 0, 0, 6.69508, 0, -0.35455, 1.04138)
+shape = SubResource("BoxShape3D_3ocv4")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 30, 0)
+transform = Transform3D(-1, -7.16125e-08, 5.01436e-08, 0, 0.573576, 0.819152, -8.74228e-08, 0.819152, -0.573576, 0, 5, -1.7)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dq1ns")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 0)
+sky_mode = 1
+
+[node name="Containers" type="Node3D" parent="."]
+
+[node name="Container_Full" parent="Containers" instance=ExtResource("2_okd2l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.15, 0, 4)
+visible = false
+
+[node name="Container_Full2" parent="Containers" instance=ExtResource("2_okd2l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 0, 4)
+
+[node name="Container_Full27" parent="Containers" instance=ExtResource("2_okd2l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.15, 0, 4)
+
+[node name="Container_Full3" parent="Containers" instance=ExtResource("2_okd2l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35, 0, 4)
+
+[node name="Container_Full6" parent="Containers" instance=ExtResource("2_okd2l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35, 0, 4)
+
+[node name="Container_Full7" parent="Containers" instance=ExtResource("2_okd2l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 0, 4)
+
+[node name="Container_Full8" parent="Containers" instance=ExtResource("2_okd2l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.15, 0, 4)
+visible = false
+
+[node name="Container_Full17" parent="Containers" instance=ExtResource("2_okd2l")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -4.05, 0, 3.1)
+
+[node name="Container_Full18" parent="Containers" instance=ExtResource("2_okd2l")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -4.05, 0, 2.2)
+
+[node name="Container_Full19" parent="Containers" instance=ExtResource("2_okd2l")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -4.05, 0, 1.3)
+
+[node name="Container_Full20" parent="Containers" instance=ExtResource("2_okd2l")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -4.05, 0, 0.4)
+
+[node name="Container_Full21" parent="Containers" instance=ExtResource("2_okd2l")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -4.05, 0, -0.5)
+
+[node name="Container_Full22" parent="Containers" instance=ExtResource("2_okd2l")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.05, 0, 3.1)
+
+[node name="Container_Full23" parent="Containers" instance=ExtResource("2_okd2l")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.05, 0, 2.2)
+
+[node name="Container_Full24" parent="Containers" instance=ExtResource("2_okd2l")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.05, 0, 1.3)
+
+[node name="Container_Full25" parent="Containers" instance=ExtResource("2_okd2l")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.05, 0, 0.4)
+
+[node name="Container_Full26" parent="Containers" instance=ExtResource("2_okd2l")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.05, 0, -0.5)
+
+[node name="Container_Full9" parent="Containers" instance=ExtResource("2_okd2l")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.15, 0, -1.4)
+visible = false
+
+[node name="Container_Full10" parent="Containers" instance=ExtResource("2_okd2l")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.25, 0, -1.4)
+
+[node name="Container_Full28" parent="Containers" instance=ExtResource("2_okd2l")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.15, 0, -1.4)
+
+[node name="Container_Full11" parent="Containers" instance=ExtResource("2_okd2l")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.35, 0, -1.4)
+
+[node name="Container_Full14" parent="Containers" instance=ExtResource("2_okd2l")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.35, 0, -1.4)
+
+[node name="Container_Full15" parent="Containers" instance=ExtResource("2_okd2l")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.25, 0, -1.4)
+
+[node name="Container_Full30" parent="Containers" instance=ExtResource("2_okd2l")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.15, 0, -1.4)
+
+[node name="Container_Full16" parent="Containers" instance=ExtResource("2_okd2l")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.15, 0, -1.4)
+visible = false
+
+[node name="Container_storage_bread" parent="Containers" instance=ExtResource("4_uy73u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.452773, 0.42, -0.965705)
+icon_name = "res://Assets/Textures/Icons/Bread.png"
+spawnable_object_name = "Bread"
+
+[node name="Container_storage_tomato" parent="Containers" instance=ExtResource("4_uy73u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.448326, 0.42, -0.965705)
+icon_name = "res://Assets/Textures/Icons/Tomato.png"
+spawnable_object_name = "Tomato"
+
+[node name="Container_storage_meat" parent="Containers" instance=ExtResource("4_uy73u")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.16775, 0.42, 3.53755)
+icon_name = "res://Assets/Textures/Icons/MeatPattyCooked.png"
+spawnable_object_name = "Meat"
+
+[node name="Container_storage_cheese" parent="Containers" instance=ExtResource("4_uy73u")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.445672, 0.42, 3.53755)
+icon_name = "res://Assets/Textures/Icons/CheeseBlock.png"
+spawnable_object_name = "Cheese"
+
+[node name="Container_storage_cabbage" parent="Containers" instance=ExtResource("4_uy73u")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.439, 0.42, 3.538)
+icon_name = "res://Assets/Textures/Icons/Cabbage.png"
+spawnable_object_name = "Cabbage"
+
+[node name="player1" parent="." instance=ExtResource("3_exxss")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.56399, 0, 0)
+
+[node name="player2" parent="." instance=ExtResource("3_exxss")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.87678, 0, 0)
+
+[node name="Stove" parent="." instance=ExtResource("5_fp4x8")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.27724, 1, 3.90703)

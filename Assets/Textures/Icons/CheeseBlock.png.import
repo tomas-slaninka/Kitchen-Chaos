@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csjhlcly8s54k"
-path.s3tc="res://.godot/imported/Kitchen Counter_MetallicSmoothness.png-c485a14491eeb71cdebab55464de04dc.s3tc.ctex"
+uid="uid://pnmwsp5ovain"
+path.s3tc="res://.godot/imported/CheeseBlock.png-e9a1becded0388401c0b096a9c9dd435.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Meshes/Textures/Kitchen Counter_MetallicSmoothness.png"
-dest_files=["res://.godot/imported/Kitchen Counter_MetallicSmoothness.png-c485a14491eeb71cdebab55464de04dc.s3tc.ctex"]
+source_file="res://Assets/Textures/Icons/CheeseBlock.png"
+dest_files=["res://.godot/imported/CheeseBlock.png-e9a1becded0388401c0b096a9c9dd435.s3tc.ctex"]
 
 [params]
 

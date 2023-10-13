@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://rd76ldbvs03m"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_nn03n"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5t5gh"]
+radius = 0.25
+height = 1.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_43wda"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jsjmm"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_nn03n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.998232, 0, 0, 0, 0.998232, 0, 0, 0, 0.998232, 0, 0.5, 0)
+mesh = SubResource("CapsuleMesh_5t5gh")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.5, 0, 0, 0, 0.1, 0, 0.551514, -0.254577)
+mesh = SubResource("CapsuleMesh_43wda")
+
+[node name="RayCast3D" type="RayCast3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0)
+debug_shape_custom_color = Color(0.843137, 0, 0, 1)
+debug_shape_thickness = 5
+
+[node name="Marker3D" type="Marker3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.350229, 0.289666)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_jsjmm")
