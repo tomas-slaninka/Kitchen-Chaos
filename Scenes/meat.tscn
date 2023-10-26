@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://tapwvgiyvx4n"]
+[gd_scene load_steps=15 format=3 uid="uid://tapwvgiyvx4n"]
 
 [ext_resource type="Texture2D" uid="uid://jvnd8a1skh2u" path="res://Meshes/Textures/Meat_AlbedoTransparency.png" id="1_5srjs"]
+[ext_resource type="Script" path="res://Scripts/meat.gd" id="1_flelb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_biavq"]
 albedo_texture = ExtResource("1_5srjs")
@@ -125,7 +126,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_5dmkh")
 
-[node name="Meat" type="Node3D"]
+[node name="Meat" type="Node3D" groups=["Frying"]]
+script = ExtResource("1_flelb")
 
 [node name="Cooked meat patty2" type="MeshInstance3D" parent="."]
 visible = false

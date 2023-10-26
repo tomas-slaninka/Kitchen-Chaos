@@ -46,14 +46,22 @@ func _physics_process(delta):
 				lastTarget.reset_albedo_color()
 			target.set_albedo_color()
 			lastTarget = target
-	
+
 	var spawnable_type
 	if Input.is_action_just_pressed("interact_" + self.name):
 		if target:
-			print(target)
-			if target.is_in_group("Spawnable_object"):
+			if $MeshInstance3D/Marker3D.get_child_count() == 1:
+				if target.has_method("place_item"):
+					var item = $MeshInstance3D/Marker3D.get_child(0)
+					$MeshInstance3D/Marker3D.remove_child(item)
+					if target.place_item(item) != true:
+						$MeshInstance3D/Marker3D.add_child(item)
+					return
+			elif target.is_in_group("Spawnable_object"):
 				spawnable_type = target.get_spawnable_object_name()
-	
+			elif target.is_in_group("Placeable_cont"):
+				$MeshInstance3D/Marker3D.add_child(target.return_item())
+
 	var inst
 	match spawnable_type:
 		"Tomato": 
@@ -71,4 +79,3 @@ func _physics_process(delta):
 		"Cheese": 
 			inst = cheese.instantiate()
 			$MeshInstance3D/Marker3D.add_child(inst)
-	

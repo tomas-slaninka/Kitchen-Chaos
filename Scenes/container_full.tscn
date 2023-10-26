@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dq5p37ru51n44"]
+[gd_scene load_steps=9 format=3 uid="uid://dq5p37ru51n44"]
 
 [ext_resource type="Script" path="res://Scripts/container_full.gd" id="1_74kra"]
 [ext_resource type="Texture2D" uid="uid://c6faqer7d73vs" path="res://Meshes/Textures/Kitchen Counter_AlbedoTransparency.png" id="1_paohg"]
+[ext_resource type="Script" path="res://Scripts/Container_Full_Marker.gd" id="3_2nfgw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_11bxk"]
 resource_local_to_scene = true
@@ -48,7 +49,7 @@ shadow_mesh = SubResource("ArrayMesh_dps3h")
 [sub_resource type="BoxShape3D" id="BoxShape3D_up51d"]
 size = Vector3(0.88762, 0.787267, 0.911696)
 
-[node name="Container_Full" type="StaticBody3D"]
+[node name="Container_Full" type="StaticBody3D" groups=["Placeable_cont"]]
 script = ExtResource("1_74kra")
 
 [node name="Cube_001" type="MeshInstance3D" parent="."]
@@ -60,3 +61,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.396103, 0)
 shape = SubResource("BoxShape3D_up51d")
+
+[node name="Container_Full_Marker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.839718, 0)
+script = ExtResource("3_2nfgw")
