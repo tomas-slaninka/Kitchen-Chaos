@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cunyagd215ge1"]
+[gd_scene load_steps=15 format=3 uid="uid://cunyagd215ge1"]
 
 [ext_resource type="Script" path="res://Scripts/cutting_place.gd" id="1_0vqeb"]
 [ext_resource type="Texture2D" uid="uid://bvau3e5fhtecg" path="res://Meshes/Textures/Chopping board_AlbedoTransparency.png" id="1_xukno"]
@@ -86,7 +86,25 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_75reg")
 
-[node name="Cutting place" type="Node3D" groups=["Kitchen Item"]]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e4cmo"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekq73"]
+bg_color = Color(0, 0.839216, 0.184314, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_lxhlv"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Cutting place" type="Node3D" groups=["Cutting", "Kitchen Item"]]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 script = ExtResource("1_0vqeb")
 
@@ -103,3 +121,21 @@ skeleton = NodePath("")
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0140061, 0)
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+size = Vector2i(109, 25)
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport"]
+offset_right = 109.0
+offset_bottom = 27.0
+theme_override_styles/background = SubResource("StyleBoxFlat_e4cmo")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ekq73")
+max_value = 4.0
+show_percentage = false
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 1.90754e-08, 0.266046, -0.218197)
+visible = false
+billboard = 1
+texture = SubResource("ViewportTexture_lxhlv")

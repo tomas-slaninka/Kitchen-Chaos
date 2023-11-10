@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://iot2x7x7dj5c"]
+[gd_scene load_steps=11 format=3 uid="uid://iot2x7x7dj5c"]
 
+[ext_resource type="Script" path="res://Scripts/bread.gd" id="1_6x33q"]
 [ext_resource type="Texture2D" uid="uid://cglum8c4txj73" path="res://Meshes/Textures/Bread_AlbedoTransparency.png" id="1_hdgqb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lb6uf"]
@@ -85,6 +86,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_v7f2y")
 
 [node name="Bread" type="Node3D"]
+script = ExtResource("1_6x33q")
 
 [node name="bread for burger top" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0456155, 0)

@@ -34,3 +34,12 @@ func return_item():
 	else:
 		remove_child(child)
 		return child
+
+func cut_item():
+	var child
+	if get_child_count() > 0:
+		child = get_child(0)
+	else:
+		return
+	if child.is_in_group("Cutting"):
+		child.cut_item()

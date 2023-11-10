@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cabwhi6t8o103"]
+[gd_scene load_steps=18 format=3 uid="uid://cabwhi6t8o103"]
 
 [ext_resource type="Texture2D" uid="uid://1hutqt5lge6u" path="res://Assets/Textures/Tiles074_1K-JPG_Color.jpg" id="1_detiu"]
 [ext_resource type="Texture2D" uid="uid://clodlbbefwp4c" path="res://Assets/Textures/Tiles074_1K-JPG_Roughness.jpg" id="2_1vcwu"]
@@ -7,7 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://cunyagd215ge1" path="res://Scenes/cutting_place.tscn" id="4_pt4en"]
 [ext_resource type="PackedScene" uid="uid://b74iymygffbi1" path="res://Scenes/container_storage.tscn" id="4_uy73u"]
 [ext_resource type="PackedScene" uid="uid://btdtuy3112v8m" path="res://Scenes/stove.tscn" id="5_fp4x8"]
+[ext_resource type="PackedScene" uid="uid://g5eoy1ucv2f" path="res://Scenes/plate.tscn" id="6_jrtg6"]
 [ext_resource type="PackedScene" uid="uid://b3f80r44jpveq" path="res://Scenes/trash_bin.tscn" id="8_at1ix"]
+[ext_resource type="PackedScene" uid="uid://c23eum2ek57gm" path="res://Scenes/orders.tscn" id="10_6ecrp"]
+[ext_resource type="Script" path="res://Scripts/Recipe spawner.gd" id="10_afxwy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bf0qu"]
 albedo_texture = ExtResource("1_detiu")
@@ -90,6 +93,7 @@ transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -4.05, 0
 
 [node name="Container_Full19" parent="Containers" instance=ExtResource("2_okd2l")]
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -4.05, 0, 1.3)
+kitchen_item = ExtResource("6_jrtg6")
 
 [node name="Container_Full20" parent="Containers" instance=ExtResource("2_okd2l")]
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -4.05, 0, 0.4)
@@ -169,3 +173,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.87678, 0, 0)
 
 [node name="Trash bin" parent="." instance=ExtResource("8_at1ix")]
 transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, -4.04588, -0.0565864, -0.504095)
+
+[node name="Recipe spawner" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+script = ExtResource("10_afxwy")
+
+[node name="Orders" parent="." instance=ExtResource("10_6ecrp")]
+
+[connection signal="item_added" from="Recipe spawner" to="Orders" method="_on_recipe_spawner_item_added"]
+[connection signal="timeout" from="Recipe spawner" to="Recipe spawner" method="_on_timeout"]

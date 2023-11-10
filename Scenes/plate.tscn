@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://g5eoy1ucv2f"]
+[gd_scene load_steps=8 format=3 uid="uid://g5eoy1ucv2f"]
 
+[ext_resource type="Script" path="res://Scripts/plate.gd" id="1_v5q82"]
 [ext_resource type="Texture2D" uid="uid://d26reug3htjan" path="res://Meshes/Textures/Plate_AlbedoTransparency.png" id="1_y2a07"]
+[ext_resource type="PackedScene" uid="uid://5fjrr3336vku" path="res://Scenes/plate_items.tscn" id="3_w3ff8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rpgqf"]
 albedo_texture = ExtResource("1_y2a07")
@@ -8,7 +10,6 @@ albedo_texture = ExtResource("1_y2a07")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s1usk"]
 resource_name = "Plate"
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 1)
 metallic = 0.4
 roughness = 0.272166
 
@@ -44,9 +45,40 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_adjir")
 
-[node name="Plate" type="Node3D"]
+[node name="Plate" type="Node3D" groups=["Kitchen Item"]]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+script = ExtResource("1_v5q82")
 
 [node name="plate model" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_rpgqf")
 mesh = SubResource("ArrayMesh_6nl54")
 skeleton = NodePath("")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+size = Vector2i(256, 64)
+
+[node name="Plate items" parent="SubViewport" instance=ExtResource("3_w3ff8")]
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1.19249e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, 1.19249e-09, 0, 0.112564, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2, 0)
+billboard = 1
+
+[node name="Sprite3D5" type="Sprite3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 0)
+billboard = 1
+
+[node name="Sprite3D2" type="Sprite3D" parent="Node3D"]
+transform = Transform3D(0.999364, 0, -0.035667, 0, 1, 0, 0.035667, 0, 0.999364, 2.5, 2, 0)
+billboard = 1
+
+[node name="Sprite3D4" type="Sprite3D" parent="Node3D"]
+transform = Transform3D(0.999364, 0, -0.035667, 0, 1, 0, 0.035667, 0, 0.999364, -2.5, 2, 0)
+billboard = 1
+
+[node name="Sprite3D3" type="Sprite3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+billboard = 1

@@ -33,6 +33,9 @@ func _physics_process(delta):
 
 	move_and_slide()
 	
+	handle_interact()
+	
+func handle_interact():
 	var result = $MeshInstance3D/RayCast3D.get_collider()
 	if not result:
 		if lastTarget != null:
@@ -48,20 +51,29 @@ func _physics_process(delta):
 			lastTarget = target
 
 	var spawnable_type
-	if Input.is_action_just_pressed("interact_" + self.name):
+	var interacts = Input.is_action_just_pressed("interact_" + self.name)
+	var cuts = Input.is_action_just_pressed("cut_" + self.name)
+	if interacts or cuts:
 		if target:
 			if $MeshInstance3D/Marker3D.get_child_count() == 1:
-				if target.has_method("place_item"):
+				if interacts and target.has_method("place_item"):
 					var item = $MeshInstance3D/Marker3D.get_child(0)
 					$MeshInstance3D/Marker3D.remove_child(item)
-					if target.place_item(item) != true:
+					var was_placed = target.place_item(item)
+					if was_placed != true:
 						$MeshInstance3D/Marker3D.add_child(item)
 					return
-			elif target.is_in_group("Spawnable_object"):
+			elif cuts and target.has_method("cut_item"):
+				target.cut_item()
+				return
+			elif target.is_in_group("Spawnable_object") and interacts:
 				spawnable_type = target.get_spawnable_object_name()
-			elif target.is_in_group("Placeable_cont"):
+				spawn_object(spawnable_type)
+			elif target.is_in_group("Placeable_cont") and interacts:
 				$MeshInstance3D/Marker3D.add_child(target.return_item())
 
+
+func spawn_object(spawnable_type):
 	var inst
 	match spawnable_type:
 		"Tomato": 

@@ -7,10 +7,10 @@ func reset_albedo_color():
 
 
 func set_albedo_color():
-	$Cube_001.transparency = 0.3
+	$Cube_001.transparency = 0.2
 
-func place_item(item):
-	$Container_Full_Marker.place_item(item)
+func place_item(item) -> bool:
+	return $Container_Full_Marker.place_item(item)
 	
 
 func return_item():
@@ -18,3 +18,6 @@ func return_item():
 
 func process_item():
 	pass
+
+func cut_item():
+	$Container_Full_Marker.cut_item()

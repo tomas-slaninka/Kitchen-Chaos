@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c23eum2ek57gm"]
+
+[ext_resource type="Script" path="res://Scripts/orders.gd" id="1_7chbb"]
+
+[node name="Orders" type="CanvasLayer"]
+script = ExtResource("1_7chbb")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_right = 175.0
+offset_bottom = 648.0
+theme_override_constants/v_separation = 70

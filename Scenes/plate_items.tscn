@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://5fjrr3336vku"]
+
+[ext_resource type="Texture2D" uid="uid://jppofmgv55nk" path="res://Assets/Textures/Icons/Bread.png" id="1_r7yw3"]
+[ext_resource type="Texture2D" uid="uid://bfq1putojc34l" path="res://Assets/Textures/Icons/CabbageSlices.png" id="2_lm3dj"]
+[ext_resource type="Texture2D" uid="uid://d1tqpxyf8f5so" path="res://Assets/Textures/Icons/CheeseSlice.png" id="3_qehts"]
+[ext_resource type="Texture2D" uid="uid://bajjqy2e5ht7m" path="res://Assets/Textures/Icons/TomatoSlice.png" id="4_lhpfh"]
+[ext_resource type="Texture2D" uid="uid://dee01jb36pt41" path="res://Assets/Textures/Icons/MeatPattyCooked.png" id="5_bxbjy"]
+
+[node name="Plate items" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 35.0
+offset_bottom = 34.0
+texture = ExtResource("1_r7yw3")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 35.0
+offset_right = 70.0
+offset_bottom = 34.0
+texture = ExtResource("2_lm3dj")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 70.0
+offset_right = 105.0
+offset_bottom = 34.0
+texture = ExtResource("3_qehts")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 105.0
+offset_right = 140.0
+offset_bottom = 34.0
+texture = ExtResource("4_lhpfh")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect5" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 140.0
+offset_right = 175.0
+offset_bottom = 34.0
+texture = ExtResource("5_bxbjy")
+expand_mode = 1
+stretch_mode = 4

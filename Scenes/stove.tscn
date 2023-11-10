@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://btdtuy3112v8m"]
+[gd_scene load_steps=15 format=3 uid="uid://btdtuy3112v8m"]
 
 [ext_resource type="Script" path="res://Scripts/cutting_place.gd" id="1_du3cl"]
 [ext_resource type="Texture2D" uid="uid://b3gfn33jm1fl7" path="res://Meshes/Textures/Stove_AlbedoTransparency.png" id="1_hykia"]
@@ -86,6 +86,24 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_bpyrq")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e4cmo"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekq73"]
+bg_color = Color(0, 0.839216, 0.184314, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ua207"]
+viewport_path = NodePath("SubViewport")
+
 [node name="Stove" type="Node3D" groups=["Frying", "Kitchen Item"]]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.123859, 0)
 script = ExtResource("1_du3cl")
@@ -105,5 +123,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0508136, 0)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 4.0
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+size = Vector2i(109, 25)
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport"]
+offset_right = 109.0
+offset_bottom = 27.0
+theme_override_styles/background = SubResource("StyleBoxFlat_e4cmo")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ekq73")
+show_percentage = false
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.297483, 0)
+visible = false
+billboard = 1
+texture = SubResource("ViewportTexture_ua207")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
