@@ -11,6 +11,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cgbaf")
 
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 218.0
+offset_bottom = 68.0
+
 [node name="Plate items" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15

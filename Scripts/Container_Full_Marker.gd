@@ -29,7 +29,7 @@ func return_item():
 	if get_child_count() == 0:
 		return
 	var child = get_child(0)
-	if child.is_in_group("Kitchen Item"):
+	if child.is_in_group("Kitchen Item") and child.has_method("return_item"):
 		return child.return_item()
 	else:
 		remove_child(child)

@@ -9,3 +9,9 @@ script = ExtResource("1_7chbb")
 offset_right = 175.0
 offset_bottom = 648.0
 theme_override_constants/v_separation = 70
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1071.0
+offset_right = 1152.0
+offset_bottom = 26.0
+text = "0"

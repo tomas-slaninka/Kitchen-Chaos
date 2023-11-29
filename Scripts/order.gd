@@ -1,7 +1,6 @@
 extends Control
 
 
-
 func initialize(recipes_dictionary_key):
 	var recipe_resources = RecipeManager.recipes_dictionary[recipes_dictionary_key]
 	$Label.text = recipes_dictionary_key
@@ -31,3 +30,6 @@ func get_texture_slot():
 	elif $"Plate items/TextureRect5".texture == null:
 		return $"Plate items/TextureRect5"
 	return null
+
+func get_order_name() -> String:
+	return $Label.text

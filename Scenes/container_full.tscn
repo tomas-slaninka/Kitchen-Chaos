@@ -1,12 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://dq5p37ru51n44"]
+[gd_scene load_steps=11 format=3 uid="uid://dq5p37ru51n44"]
 
 [ext_resource type="Script" path="res://Scripts/container_full.gd" id="1_74kra"]
 [ext_resource type="Texture2D" uid="uid://c6faqer7d73vs" path="res://Meshes/Textures/Kitchen Counter_AlbedoTransparency.png" id="1_paohg"]
 [ext_resource type="Script" path="res://Scripts/Container_Full_Marker.gd" id="3_2nfgw"]
+[ext_resource type="Texture2D" uid="uid://csjhlcly8s54k" path="res://Meshes/Textures/Kitchen Counter_MetallicSmoothness.png" id="3_og42r"]
+[ext_resource type="Texture2D" uid="uid://b001ivn34kwub" path="res://Meshes/Textures/Kitchen Counter_Normal.png" id="4_epeu7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_11bxk"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("1_paohg")
+metallic = 1.0
+metallic_specular = 0.0
+metallic_texture = ExtResource("3_og42r")
+metallic_texture_channel = 3
+roughness_texture = ExtResource("3_og42r")
+normal_enabled = true
+normal_texture = ExtResource("4_epeu7")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sahjm"]
 resource_name = "Kitchen Counter"

@@ -26,6 +26,7 @@ func place_item(item) -> bool:
 		return false
 	else:
 		$Marker3D.add_child(item)
+		cutting_progress = 0
 		$Sprite3D.show()
 		has_item = true
 		return true
@@ -39,12 +40,15 @@ func return_item():
 		$Marker3D.remove_child(child)
 		$Sprite3D.hide()
 		has_item = false
-		$Timer.stop()
+		if has_node("$Timer"):
+			$Timer.stop()
 		return child
 
 
 func _on_timer_timeout():
-	$Marker3D.get_child(0).change_meat_state()
+	if $Marker3D.get_children():
+		if $Marker3D.get_child(0):
+			$Marker3D.get_child(0).change_meat_state()
 
 func cut_item():
 	if cutting_progress < 4:

@@ -8,6 +8,7 @@ const SPEED = 5.0
 @onready var bread = preload("res://Scenes/bread.tscn")
 @onready var meat = preload("res://Scenes/meat.tscn")
 @onready var cabbage = preload("res://Scenes/cabbage.tscn")
+@onready var plate = preload("res://Scenes/plate.tscn")
 
 var rotation_direction: float
 var lastTarget
@@ -90,4 +91,7 @@ func spawn_object(spawnable_type):
 			$MeshInstance3D/Marker3D.add_child(inst)
 		"Cheese": 
 			inst = cheese.instantiate()
+			$MeshInstance3D/Marker3D.add_child(inst)
+		"Plate": 
+			inst = plate.instantiate()
 			$MeshInstance3D/Marker3D.add_child(inst)

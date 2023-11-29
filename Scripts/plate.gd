@@ -41,5 +41,5 @@ func display_texture(texture_slot, item_name) -> void:
 		"Tomato":
 			texture_slot.texture = load("res://Assets/Textures/Icons/TomatoSlice.png")
 
-func return_item():
-	pass
+func get_placed_items():
+	return placed_items
